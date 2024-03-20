@@ -4,6 +4,7 @@ resources:
 - configmap.yaml
 - job.yaml
 - deployment.yaml
+- hpa.yaml
 
 images:
 - name: myapp
