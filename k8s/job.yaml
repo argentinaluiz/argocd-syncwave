@@ -9,7 +9,7 @@ spec:
       containers:
       - name: myapp
         image: myapp
-        command: ["node",  "index-for-deployment.js"]
+        command: ["node",  "./index-for-job.js"]
         env:
         - name: MY_CONFIG
           valueFrom:
