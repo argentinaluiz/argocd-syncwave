@@ -2,6 +2,10 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: myjob
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   ttlSecondsAfterFinished: 100
   template:
