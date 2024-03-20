@@ -36,6 +36,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+     
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
@@ -77,11 +83,7 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.tag_version.outputs.new_tag }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-     
-      - name: echo tags
-        run: echo ${{ steps.meta.outputs.tags }}    
-        
