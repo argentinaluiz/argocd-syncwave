@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: myapp
   annotations:
-    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   selector:
     matchLabels:
