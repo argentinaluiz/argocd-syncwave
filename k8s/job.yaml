@@ -10,4 +10,10 @@ spec:
       - name: myapp
         image: myapp
         command: ["node",  "index-for-deployment.js"]
+        env:
+        - name: MY_CONFIG
+          valueFrom:
+            configMapKeyRef:
+              name: my-config
+              key: key
       restartPolicy: Never
