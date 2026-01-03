@@ -9,4 +9,4 @@ resources:
 images:
 - name: myapp
   newName: ghcr.io/argentinaluiz/argocd-syncwave
-  newTag: v0.0.659
+  newTag: v0.0.660
